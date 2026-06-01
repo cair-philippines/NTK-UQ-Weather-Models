@@ -1,5 +1,9 @@
 # NTK-UQ-Weather-Models
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20499051.svg)](https://doi.org/10.5281/zenodo.20499051)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](pyproject.toml)
+
 Last-layer **empirical Neural Tangent Kernel (NTK)** uncertainty quantification
 for pre-trained AI weather forecasting models. This is the reference
 implementation for:
@@ -14,6 +18,13 @@ any frozen deterministic weather model, with no retraining and a single
 matrix-vector product at inference. It treats a model's last-layer features as an
 empirical NTK, builds the feature kernel, decomposes it (SVD or ICA), and returns
 the Gaussian-process posterior variance.
+
+![NTK-UQ pipeline](docs/assets/pipeline.png)
+
+*Atmospheric variables from extreme-weather events pass through a frozen foundation
+weather model to extract last-layer features. These build the empirical NTK, which
+is decomposed (SVD or ICA) and yields the GP posterior variance as calibrated
+prediction intervals.*
 
 ## What this repo gives you
 
@@ -146,6 +157,9 @@ save/load, and the metrics — all without weather-model weights.
   doi       = {10.1145/3770855.3818106}
 }
 ```
+
+The software release is archived on Zenodo:
+**[10.5281/zenodo.20499051](https://doi.org/10.5281/zenodo.20499051)**.
 
 ## License
 

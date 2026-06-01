@@ -27,6 +27,7 @@
       border-radius: 4px; padding: 0.15em 0.6em; font-size: 0.8rem; font-weight: 600;
       letter-spacing: 0.05em; margin-bottom: 1rem;
     }
+    .tldr { max-width: 720px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem; font-weight: 600; line-height: 1.4; color: var(--blue); }
     .author { font-size: 1.05rem; color: var(--text); margin-bottom: 0.3rem; }
     .affil { font-size: 0.9rem; color: var(--gray); margin-bottom: 1.5rem; }
     .link-row { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
@@ -45,10 +46,6 @@
     .abstract-text { font-size: 0.97rem; line-height: 1.85; color: #374151; text-align: justify; }
     .teaser img { width: 100%; border-radius: 6px; border: 1px solid var(--border); }
     .fig-caption { font-size: 0.85rem; color: var(--gray); margin-top: 0.75rem; line-height: 1.6; }
-    .lay-text {
-      font-size: 1rem; line-height: 1.9; color: #374151;
-      border-left: 3px solid var(--blue); padding-left: 1.2rem;
-    }
     /* Stat cards */
     .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.6rem; }
     @media (max-width: 640px) { .stat-row { grid-template-columns: 1fr; } }
@@ -59,21 +56,6 @@
     .idea { border-left: 3px solid var(--blue); padding-left: 1.1rem; margin-bottom: 1.3rem; }
     .idea h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
     .idea p { font-size: 0.92rem; line-height: 1.7; color: #374151; }
-    /* Interactive */
-    .plot-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
-    .plot-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.8rem; color: #374151; }
-    canvas { display: block; width: 100%; border-radius: 4px; }
-    .slider-row { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.9rem; }
-    .slider-label { font-size: 0.82rem; white-space: nowrap; min-width: 90px; color: #374151; }
-    .slider-label span { font-weight: 700; font-family: monospace; }
-    input[type=range] { flex: 1; accent-color: var(--blue); cursor: pointer; }
-    .slider-note { font-size: 0.78rem; color: var(--gray); margin-top: 0.4rem; }
-    .callout {
-      background: var(--blue-light); border-left: 3px solid var(--blue);
-      border-radius: 0 6px 6px 0; padding: 0.8rem 1rem; font-size: 0.88rem;
-      color: #1e40af; margin-top: 1rem;
-    }
-    .callout.warn { background: #fef2f2; border-left-color: #dc2626; color: #991b1b; }
     .results-intro { font-size: 0.95rem; line-height: 1.75; color: #374151; margin-bottom: 1.2rem; }
     .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 0.6rem; }
     .data-table th { background: #f3f4f6; font-weight: 600; padding: 0.6rem 0.8rem; text-align: left; border: 1px solid var(--border); }
@@ -107,12 +89,14 @@
     <a href="https://doi.org/10.1145/3770855.3818106" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">Paper</a>
     <a href="https://openreview.net/forum?id=xngbsJiZVY" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">OpenReview</a>
     <a href="https://github.com/JomaMinoza/NTK-UQ-Weather-Models" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">Code</a>
+    <a href="https://doi.org/10.5281/zenodo.20499051" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">Zenodo</a>
   </div>
 </nav>
 
 <section id="header" style="padding-top:5rem;">
   <span class="venue-tag">KDD 2026</span>
   <h1>Scalable Uncertainty Quantification for Extreme Weather Forecasting via Empirical Neural Tangent Kernels</h1>
+  <p class="tldr">Calibrated, spatially-adaptive uncertainty for any frozen deep weather model &mdash; no retraining, one matrix-vector product at inference.</p>
   <p class="author">Jose Marie Antonio Mi&ntilde;oza &nbsp;&middot;&nbsp; Rex Gregor Laylo &nbsp;&middot;&nbsp; Sebastian C. Iba&ntilde;ez</p>
   <p class="affil">Center for AI Research PH</p>
   <div class="link-row">
@@ -128,10 +112,11 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.165c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
       Code
     </a>
+    <a class="link-btn" href="https://doi.org/10.5281/zenodo.20499051" target="_blank">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V6a4 4 0 00-4-4zm2 5H8V6a2 2 0 114 0v1z"/></svg>
+      Zenodo
+    </a>
   </div>
-  <p style="font-size:0.9rem; color:var(--gray); margin-top:1.4rem;">
-    Calibrated, spatially-adaptive uncertainty for any frozen deep weather model &mdash; no retraining, one matrix-vector product at inference.
-  </p>
 </section>
 
 <!-- ABSTRACT + STATS -->
@@ -176,26 +161,8 @@
   </div>
 </section>
 
-<!-- LAY SUMMARY -->
-<section class="page-section alt">
-  <div class="inner">
-    <div class="sec-title">Lay Summary</div>
-    <p class="lay-text">
-      AI weather models forecast as accurately as traditional physics-based systems, far faster &mdash; but they
-      give a single answer with no sense of how much to trust it. During a typhoon or heat wave, knowing the
-      uncertainty is as important as the forecast itself.
-    </p>
-    <p class="lay-text" style="margin-top:1rem;">
-      NTK-UQ adds that missing uncertainty to any already-trained model, without retraining and with negligible
-      cost. It treats the model's internal features as a similarity measure: an unusual atmospheric state
-      (an extreme event) looks different from typical weather, so the method assigns it higher uncertainty. The
-      result is sharper, location-specific confidence intervals that widen exactly where forecasts are hardest.
-    </p>
-  </div>
-</section>
-
 <!-- KEY IDEAS -->
-<section class="page-section">
+<section class="page-section alt">
   <div class="inner">
     <div class="sec-title">Key Ideas</div>
     <div class="idea">
@@ -216,29 +183,6 @@
       <p>The feature eigenspectrum concentration ratio decides the method: concentrated &rarr; SVD with low rank,
       distributed &rarr; ICA. This correctly prescribes the superior decomposition for all four evaluated
       architectures without exhaustive search.</p>
-    </div>
-  </div>
-</section>
-
-<!-- INTERACTIVE: VARIANCE COLLAPSE -->
-<section class="page-section alt">
-  <div class="inner wide">
-    <div class="sec-title">Interactive: Variance Collapse</div>
-    <p class="results-intro">
-      The correction-to-prior ratio <em>R<sub>k</sub> = C<sub>k</sub>/P</em> measures how much of the prior
-      variance the GP correction consumes at truncation rank <em>k</em> (FourCastNetV2). As <em>k</em> grows the
-      correction eats the prior; once it exceeds <strong>0.9</strong>, discrimination between extreme and routine
-      events collapses. Drag the slider to see it happen.
-    </p>
-    <div class="plot-card">
-      <div class="plot-title">Correction ratio R<sub>k</sub> vs truncation rank k</div>
-      <canvas id="c_collapse" height="240"></canvas>
-      <div class="slider-row">
-        <span class="slider-label">rank k = <span id="v_k">10</span></span>
-        <input id="sl_k" type="range" min="0" max="4" step="1" value="1" />
-      </div>
-      <p class="slider-note">Calibration points: k = 5, 10, 20, 50, 100. Dashed line = 0.9 collapse threshold.</p>
-      <div id="status" class="callout">R<sub>k</sub> = 0.12 &mdash; discrimination preserved (8&times; headroom below threshold).</div>
     </div>
   </div>
 </section>
@@ -336,66 +280,6 @@
     navigator.clipboard.writeText(document.getElementById('bib').innerText);
     var b = document.querySelector('.copy-btn'); b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1200);
   }
-
-  // Variance collapse plot
-  (function () {
-    var KS = [5, 10, 20, 50, 100];
-    var RK = [0.06, 0.12, 0.24, 0.53, 0.92];
-    var cv = document.getElementById('c_collapse');
-    var ctx = cv.getContext('2d');
-    var sl = document.getElementById('sl_k');
-
-    function resize() { cv.width = cv.clientWidth; draw(parseInt(sl.value)); }
-
-    function draw(idx) {
-      var W = cv.width, H = cv.height, pad = 38;
-      ctx.clearRect(0, 0, W, H);
-      var x0 = pad, x1 = W - 12, y0 = H - pad, y1 = 14;
-      function X(i) { return x0 + (x1 - x0) * (i / (KS.length - 1)); }
-      function Y(r) { return y0 + (y1 - y0) * r; }   // r in [0,1]
-      // axes
-      ctx.strokeStyle = '#e5e7eb'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.moveTo(x0, y0); ctx.lineTo(x0, y1); ctx.stroke();
-      // threshold 0.9
-      ctx.strokeStyle = '#dc2626'; ctx.setLineDash([5, 4]);
-      ctx.beginPath(); ctx.moveTo(x0, Y(0.9)); ctx.lineTo(x1, Y(0.9)); ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.fillStyle = '#dc2626'; ctx.font = '11px Inter'; ctx.fillText('collapse threshold 0.9', x0 + 6, Y(0.9) - 5);
-      // curve
-      ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2;
-      ctx.beginPath();
-      for (var i = 0; i < KS.length; i++) { var xx = X(i), yy = Y(RK[i]); if (i === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy); }
-      ctx.stroke();
-      // points + labels
-      for (var j = 0; j < KS.length; j++) {
-        ctx.fillStyle = (j === idx) ? '#2563eb' : '#9ca3af';
-        ctx.beginPath(); ctx.arc(X(j), Y(RK[j]), (j === idx) ? 6 : 4, 0, 6.2832); ctx.fill();
-        ctx.fillStyle = '#6b7280'; ctx.font = '11px Inter'; ctx.textAlign = 'center';
-        ctx.fillText('k=' + KS[j], X(j), y0 + 16);
-      }
-      ctx.textAlign = 'left';
-    }
-
-    function update() {
-      var idx = parseInt(sl.value);
-      document.getElementById('v_k').textContent = KS[idx];
-      var r = RK[idx];
-      var st = document.getElementById('status');
-      if (r >= 0.9) {
-        st.className = 'callout warn';
-        st.innerHTML = 'R<sub>k</sub> = ' + r.toFixed(2) + ' &mdash; <strong>variance collapse</strong>: the correction consumes ' +
-          Math.round(r * 100) + '% of the prior, leaving only ' + Math.round((1 - r) * 100) + '% &mdash; intervals become uniform.';
-      } else {
-        st.className = 'callout';
-        st.innerHTML = 'R<sub>k</sub> = ' + r.toFixed(2) + ' &mdash; discrimination preserved (' +
-          Math.round((1 - r) * 100) + '% residual variance retained).';
-      }
-      draw(idx);
-    }
-    sl.addEventListener('input', update);
-    window.addEventListener('resize', resize);
-    resize(); update();
-  })();
 </script>
 </body>
 </html>
