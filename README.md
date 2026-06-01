@@ -1,5 +1,7 @@
 # NTK-UQ-Weather-Models
 
+[![Paper](https://img.shields.io/badge/Paper-KDD%202026-b31b1b.svg)](https://doi.org/10.1145/3770855.3818106)
+[![PyPI](https://img.shields.io/pypi/v/ntk-uq-weather.svg)](https://pypi.org/project/ntk-uq-weather/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20499051.svg)](https://doi.org/10.5281/zenodo.20499051)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](pyproject.toml)
@@ -38,6 +40,12 @@ prediction intervals.*
 ## Install
 
 ```bash
+pip install ntk-uq-weather
+```
+
+Or from source for development:
+
+```bash
 git clone https://github.com/JomaMinoza/NTK-UQ-Weather-Models.git
 cd NTK-UQ-Weather-Models
 pip install -e .
@@ -45,17 +53,17 @@ pip install -e .
 
 The core install (kernel + calibration + GP posterior) needs only
 `torch`, `numpy`, `scipy`, `scikit-learn`. Each weather model needs its **own
-backend** — install only the ones you use:
+backend**. Install only the ones you use:
 
 | Model | Architecture | Backend (extra) | Features `global_avg` / `multi_stat` |
 |-------|--------------|-----------------|--------------------------------------|
-| FourCastNetV2 | SFNO | `pip install -e ".[fourcastnet]"` | 256 / 1536 |
-| Pangu-Weather | 3D Swin Transformer (ONNX) | `pip install -e ".[pangu]"` | 69 / 414 |
-| Aurora | Swin backbone + Perceiver I/O | `pip install -e ".[aurora]"` | 65 / 390 |
-| AIFS | GNN encoder + Transformer | `pip install -e ".[aifs]"` | 1024 / 6144 |
+| FourCastNetV2 | SFNO | `pip install "ntk-uq-weather[fourcastnet]"` | 256 / 1536 |
+| Pangu-Weather | 3D Swin Transformer (ONNX) | `pip install "ntk-uq-weather[pangu]"` | 69 / 414 |
+| Aurora | Swin backbone + Perceiver I/O | `pip install "ntk-uq-weather[aurora]"` | 65 / 390 |
+| AIFS | GNN encoder + Transformer | `pip install "ntk-uq-weather[aifs]"` | 1024 / 6144 |
 
-EM-DAT date extraction needs `pandas`/`openpyxl` (`pip install -e ".[data]"`).
-Install everything with `pip install -e ".[all]"`.
+EM-DAT date extraction needs `pandas`/`openpyxl` (`pip install "ntk-uq-weather[data]"`).
+Install everything with `pip install "ntk-uq-weather[all]"`.
 
 ## Quickstart (no model weights needed)
 
