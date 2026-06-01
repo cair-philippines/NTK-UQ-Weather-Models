@@ -96,7 +96,7 @@
 <section id="header" style="padding-top:5rem;">
   <span class="venue-tag">KDD 2026</span>
   <h1>Scalable Uncertainty Quantification for Extreme Weather Forecasting via Empirical Neural Tangent Kernels</h1>
-  <p class="tldr">Calibrated, spatially-adaptive uncertainty for any frozen deep weather model &mdash; no retraining, one matrix-vector product at inference.</p>
+  <p class="tldr">Calibrated, spatially-adaptive uncertainty for any frozen deep weather model,<br>with no retraining and one matrix-vector product at inference.</p>
   <p class="author">Jose Marie Antonio Mi&ntilde;oza &nbsp;&middot;&nbsp; Rex Gregor Laylo &nbsp;&middot;&nbsp; Sebastian C. Iba&ntilde;ez</p>
   <p class="affil">Center for AI Research PH</p>
   <div class="link-row">
@@ -125,7 +125,7 @@
     <div class="sec-title">Abstract</div>
     <p class="abstract-text">
       Deep learning weather models now match numerical weather prediction accuracy while running orders of
-      magnitude faster, but produce deterministic forecasts without uncertainty estimates &mdash; a critical gap
+      magnitude faster, but produce deterministic forecasts without uncertainty estimates, a critical gap
       for high-stakes decisions during extreme weather events. We propose Neural Tangent Kernel-based uncertainty
       quantification (<strong>NTK-UQ</strong>) using last-layer empirical features. Theory predicts that UQ
       quality is architecture-dependent through two mechanisms. First, a <em>variance collapse</em> mechanism
@@ -213,7 +213,7 @@
     </table>
     <p class="fig-caption">ICA satisfies coverage for 3 of 4 models with lower CRPS; SVD wins only for Pangu-Weather, whose 69-dim pooled features are inherently low-rank.</p>
 
-    <div class="subhead">NTK-UQ vs conformal prediction &mdash; mean &sigma; (coverage)</div>
+    <div class="subhead">NTK-UQ vs conformal prediction: mean &sigma; (coverage)</div>
     <table class="data-table">
       <thead><tr><th>Variable</th><th>Model</th><th>Lead</th><th>NTK-UQ (best)</th><th>Conformal</th><th>Sharper</th></tr></thead>
       <tbody>
@@ -247,7 +247,7 @@
     <p class="fig-caption">
       <strong>Figure 2.</strong> AIFS spatial uncertainty for Typhoon Odette (2021-12-16, Philippines), t+12h.
       The NTK-UQ uncertainty map (right) concentrates near the cyclone track, aligning with forecast error
-      &mdash; enabling targeted warnings for landfall zones rather than uniform domain-wide alerts.
+      to enable targeted warnings for landfall zones rather than uniform domain-wide alerts.
     </p>
   </div>
 </section>

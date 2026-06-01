@@ -163,5 +163,6 @@ The software release is archived on Zenodo:
 
 ## License
 
-Apache License 2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
 Copyright 2026 Department of Education (Center for AI Research), Philippines.
