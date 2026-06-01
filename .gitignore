@@ -9,12 +9,13 @@ dist/
 venv/
 env/
 
-# Data and model artifacts (never commit)
-data/
-outputs/
-results/
-logs/
-checkpoints/
+# Data and model artifacts (never commit). Anchored to repo root so the
+# packaged ntk_uq/data/ (bundled date lists) is NOT ignored.
+/data/
+/outputs/
+/results/
+/logs/
+/checkpoints/
 *.ckpt
 *.pt
 *.pth
