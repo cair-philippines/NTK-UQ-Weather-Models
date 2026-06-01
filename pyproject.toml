@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ntk-uq-weather"
+version = "0.1.0"
+description = "Last-layer empirical Neural Tangent Kernel uncertainty quantification for AI weather models"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Jose Marie Antonio Minoza" },
+    { name = "Rex Gregor Laylo" },
+    { name = "Sebastian C. Ibanez" },
+]
+keywords = [
+    "uncertainty quantification",
+    "neural tangent kernel",
+    "gaussian processes",
+    "weather forecasting",
+    "calibration",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.23",
+    "scipy>=1.9",
+    "scikit-learn>=1.1",
+    "tqdm>=4.64",
+]
+
+[project.optional-dependencies]
+# Each weather model needs its own backend; install only what you use.
+fourcastnet = ["ai-models-fourcastnetv2"]
+pangu = ["onnxruntime-gpu"]
+aurora = ["microsoft-aurora"]
+aifs = ["anemoi-inference>=0.8.0", "anemoi-models==0.9.7", "earthkit-data", "earthkit-regrid", "ecmwf-opendata"]
+data = ["pandas", "openpyxl", "xarray", "gcsfs", "zarr"]
+all = ["ai-models-fourcastnetv2", "onnxruntime-gpu", "microsoft-aurora", "anemoi-inference>=0.8.0", "anemoi-models==0.9.7", "earthkit-data", "earthkit-regrid", "ecmwf-opendata", "pandas", "openpyxl", "xarray", "gcsfs", "zarr"]
+
+[project.urls]
+Repository = "https://github.com/JomaMinoza/NTK-UQ-Weather-Models"
+
+[tool.setuptools.packages.find]
+include = ["ntk_uq*"]
+
+[tool.setuptools.package-data]
+"ntk_uq.data" = ["*.json"]

@@ -1,0 +1,19 @@
+# Core dependencies (kernel construction, decomposition, GP posterior)
+torch>=2.0
+numpy>=1.23
+scipy>=1.9
+scikit-learn>=1.1
+
+# Per-model backends are optional. Install only the ones you need:
+#
+#   FourCastNetV2 (SFNO):   pip install ai-models-fourcastnetv2
+#   Pangu-Weather (ONNX):   pip install onnxruntime-gpu
+#   Aurora (Perceiver):     pip install microsoft-aurora
+#   AIFS (GNN-Transformer): pip install anemoi-inference>=0.8.0 anemoi-models==0.9.7 \
+#                                       earthkit-data earthkit-regrid ecmwf-opendata
+#
+# WeatherBench2 ERA5 streaming (optional, for reproducing the paper):
+#   pip install xarray gcsfs zarr
+#
+# Or install everything via the package extras:
+#   pip install -e ".[all]"

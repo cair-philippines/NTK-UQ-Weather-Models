@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Data and model artifacts (never commit)
+data/
+outputs/
+results/
+logs/
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.nc
+*.zarr
+*.grib
+*.tar
+*.tar.gz
+*.npz
+*.pkl
+
+# Caches
+.cache/
+~/.cache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

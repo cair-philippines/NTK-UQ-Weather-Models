@@ -1,0 +1,14 @@
+NTK-UQ-Weather-Models
+Copyright 2026 Department of Education (Center for AI Research), Philippines
+
+This product includes software developed at the Center for AI Research (ECAIR),
+Department of Education, Philippines.
+
+Authors: Jose Marie Antonio Minoza, Rex Gregor Laylo, Sebastian C. Ibanez.
+
+If you use this software, please cite:
+
+  J. M. A. Minoza, R. G. Laylo, and S. C. Ibanez. "Scalable Uncertainty
+  Quantification for Extreme Weather Forecasting via Empirical Neural Tangent
+  Kernels." Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery
+  and Data Mining (KDD '26), 2026.
