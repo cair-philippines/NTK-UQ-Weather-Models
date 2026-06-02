@@ -79,7 +79,17 @@
     .copy-btn:hover { background: rgba(255,255,255,0.2); }
     footer { text-align: center; padding: 2rem; font-size: 0.82rem; color: var(--gray); border-top: 1px solid var(--border); }
     footer a { color: var(--blue); text-decoration: none; }
+    .eq { margin: 1.3rem 0; text-align: center; overflow-x: auto; overflow-y: hidden; }
+    .eq-note { font-size: 0.9rem; color: var(--gray); }
   </style>
+  <!-- MathJax: LaTeX-rendered equations -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
 </head>
 <body>
 
@@ -89,7 +99,7 @@
     <a href="https://doi.org/10.1145/3770855.3818106" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">Paper</a>
     <a href="https://openreview.net/forum?id=xngbsJiZVY" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">OpenReview</a>
     <a href="https://github.com/JomaMinoza/NTK-UQ-Weather-Models" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">Code</a>
-    <a href="https://doi.org/10.5281/zenodo.20499051" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">Zenodo</a>
+    <a href="https://doi.org/10.5281/zenodo.20499050" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">Zenodo</a>
     <a href="https://pypi.org/project/ntk-uq-weather/" target="_blank" style="font-size:0.85rem; color:var(--gray); text-decoration:none; padding:0 0.6rem;">PyPI</a>
   </div>
 </nav>
@@ -113,7 +123,7 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.165c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22v3.293c0 .319.21.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
       Code
     </a>
-    <a class="link-btn" href="https://doi.org/10.5281/zenodo.20499051" target="_blank">
+    <a class="link-btn" href="https://doi.org/10.5281/zenodo.20499050" target="_blank">
       <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V6a4 4 0 00-4-4zm2 5H8V6a2 2 0 114 0v1z"/></svg>
       Zenodo
     </a>
@@ -163,9 +173,19 @@
     <p class="fig-caption">
       <strong>Figure 1.</strong> Atmospheric variables from extreme-weather events pass through a frozen
       foundation weather model to extract last-layer features. These build the empirical Neural Tangent Kernel,
-      decomposed via SVD or ICA (U&Sigma;V<sup>T</sup>) to a rank-<em>k</em> approximation. At inference, the GP
+      decomposed via SVD or ICA (\(U\Sigma V^\top\)) to a rank-\(k\) approximation. At inference, the GP
       posterior variance yields calibrated prediction intervals per variable.
     </p>
+    <p>NTK-UQ treats a frozen model's last-layer features \(\phi(x)\) as an empirical kernel and returns
+    the Gaussian-process posterior variance per output variable:</p>
+    <div class="eq">
+      \[ K(x, x') = \phi(x)^\top \phi(x'), \qquad
+         \sigma^2(x_*) = \bigl\lVert \tilde{\phi}(x_*) \bigr\rVert^2 + \sigma_n^2
+         - \sum_{j=1}^{k} \frac{\lambda_j\, c_j^2}{\lambda_j + \sigma_n^2}. \]
+    </div>
+    <p class="eq-note">Here \(c_j = \tilde{\phi}(x_*)^\top v_j\) projects the centered test feature onto the
+    \(j\)-th kernel eigenvector \(v_j\) (eigenvalue \(\lambda_j\)), and \(\sigma_n^2\) is the noise variance.
+    A post-hoc scale \(\alpha\) calibrates the interval width per variable.</p>
   </div>
 </section>
 
@@ -175,10 +195,10 @@
     <div class="sec-title">Key Ideas</div>
     <div class="idea">
       <h3>1. Variance collapse is predictable</h3>
-      <p>When the truncation rank <em>k</em> approaches the feature space's effective rank, the GP correction term
+      <p>When the truncation rank \(k\) approaches the feature space's effective rank, the GP correction term
       consumes nearly all prior variance and every input looks equally (un)certain. A simple diagnostic
-      ratio <em>R<sub>k</sub> = C<sub>k</sub>/P &lt; 0.9</em> flags this before deployment. Concentrated spectra
-      (spectral operators) need aggressive truncation (<em>k &le; 10</em>); attention-based models tolerate full rank.</p>
+      ratio \(R_k = C_k/P < 0.9\) flags this before deployment. Concentrated spectra
+      (spectral operators) need aggressive truncation (\(k \le 10\)); attention-based models tolerate full rank.</p>
     </div>
     <div class="idea">
       <h3>2. ICA beats SVD on heavy tails</h3>
@@ -205,9 +225,9 @@
       conformal prediction is a reference baseline (never highlighted).
     </p>
 
-    <div class="subhead">ICA vs SVD at optimal rank k* (2m temperature)</div>
+    <div class="subhead">ICA vs SVD at optimal rank \(k^*\) (2m temperature)</div>
     <table class="data-table">
-      <thead><tr><th>Model</th><th>Method</th><th>k*</th><th>Coverage</th><th>Sharpness (&sigma;)</th><th>CRPS</th></tr></thead>
+      <thead><tr><th>Model</th><th>Method</th><th>\(k^*\)</th><th>Coverage</th><th>Sharpness (\(\sigma\))</th><th>CRPS</th></tr></thead>
       <tbody>
         <tr><td>AIFS</td><td class="best">ICA</td><td>7</td><td class="best">90.6%</td><td>168.9</td><td class="best">129.8</td></tr>
         <tr><td>AIFS</td><td>SVD</td><td>50</td><td>90.9%</td><td>144.8</td><td>133.5</td></tr>
@@ -221,7 +241,7 @@
     </table>
     <p class="fig-caption">ICA satisfies coverage for 3 of 4 models with lower CRPS; SVD wins only for Pangu-Weather, whose 69-dim pooled features are inherently low-rank.</p>
 
-    <div class="subhead">NTK-UQ vs conformal prediction: mean &sigma; (coverage)</div>
+    <div class="subhead">NTK-UQ vs conformal prediction: mean \(\sigma\) (coverage)</div>
     <table class="data-table">
       <thead><tr><th>Variable</th><th>Model</th><th>Lead</th><th>NTK-UQ (best)</th><th>Conformal</th><th>Sharper</th></tr></thead>
       <tbody>
@@ -231,7 +251,7 @@
         <tr><td>MSL (Pa)</td><td>FourCastNetV2</td><td>24h</td><td class="best">140 (89%)</td><td class="ref">211 (90%)</td><td>34%</td></tr>
       </tbody>
     </table>
-    <p class="fig-caption">NTK-UQ achieves lower &sigma; than conformal in 81% of valid comparisons (230/284), at matched &asymp;90% coverage.</p>
+    <p class="fig-caption">NTK-UQ achieves lower \(\sigma\) than conformal in 81% of valid comparisons (230/284), at matched \(\approx\)90% coverage.</p>
 
     <div class="subhead">Adaptivity: coefficient of variation at t+6h (higher = more adaptive)</div>
     <table class="data-table">

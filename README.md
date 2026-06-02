@@ -2,7 +2,7 @@
 
 [![Paper](https://img.shields.io/badge/Paper-KDD%202026-b31b1b.svg)](https://doi.org/10.1145/3770855.3818106)
 [![PyPI](https://img.shields.io/pypi/v/ntk-uq-weather.svg)](https://pypi.org/project/ntk-uq-weather/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20499051.svg)](https://doi.org/10.5281/zenodo.20499051)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20499050.svg)](https://doi.org/10.5281/zenodo.20499050)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](pyproject.toml)
 
@@ -31,8 +31,8 @@ prediction intervals.*
 ## What this repo gives you
 
 1. **Per-model last-layer feature extractors** for four production weather models
-   (the centerpiece — how to pull empirical-NTK features from each architecture).
-2. **`NTKCalibrator`** — kernel construction, SVD/ICA decomposition, GP posterior,
+   (the centerpiece: how to pull empirical-NTK features from each architecture).
+2. **`NTKCalibrator`**: kernel construction, SVD/ICA decomposition, GP posterior,
    and per-variable post-hoc scaling.
 3. The **EM-DAT initialization-date list** (n = 100) used in the paper, plus the
    extraction utility.
@@ -68,7 +68,7 @@ Install everything with `pip install "ntk-uq-weather[all]"`.
 ## Quickstart (no model weights needed)
 
 The empirical-NTK calibration runs on plain feature arrays. This demonstrates the
-core property — inputs dissimilar to the calibration set get higher uncertainty:
+core property: inputs dissimilar to the calibration set get higher uncertainty:
 
 ```bash
 python examples/01_calibrate_synthetic.py
@@ -129,15 +129,15 @@ deduplicated and selected from the 208-date precursor pool. EM-DAT itself is not
 redistributed; download it from https://www.emdat.be/ and rebuild the pool with
 `ntk_uq.data.extract_precursor_dates(path_to_xlsx)`.
 
-## Paper ↔ code mapping
+## Paper-to-code mapping
 
 | Paper | Code |
 |-------|------|
-| Last-layer feature kernel `K(x,x') = φ(x)ᵀφ(x')` | `NTKCalibrator.calibrate_lead_time` |
+| Last-layer feature kernel `K(x,x') = phi(x)^T phi(x')` | `NTKCalibrator.calibrate_lead_time` |
 | SVD / ICA decomposition (Section 3.4) | `NTKCalibrator._calibrate_svd` / `_calibrate_ica` |
 | GP posterior variance (Eq. 4) | `NTKCalibrator.compute_uncertainty` |
 | Dual features: `global_avg`, `multi_stat` | `*.extract_features_dual` |
-| Post-hoc scaling `α` (Section 3.5) | `NTKCalibrator.calibrate_all_lead_times` |
+| Post-hoc scaling `alpha` (Section 3.5) | `NTKCalibrator.calibrate_all_lead_times` |
 | FourCastNetV2 (SFNO) | `FourCastNetFeatureExtractor` |
 | Pangu-Weather | `PanguWeatherFeatureExtractor` |
 | Aurora | `AuroraFeatureExtractor` |
@@ -152,7 +152,7 @@ pytest tests/
 ```
 
 The tests exercise the kernel/decomposition/GP path, the discrimination property,
-save/load, and the metrics — all without weather-model weights.
+save/load, and the metrics, all without weather-model weights.
 
 ## Citation
 
@@ -166,8 +166,8 @@ save/load, and the metrics — all without weather-model weights.
 }
 ```
 
-The software release is archived on Zenodo:
-**[10.5281/zenodo.20499051](https://doi.org/10.5281/zenodo.20499051)**.
+The software release is archived on Zenodo (concept DOI, always resolves to the
+latest version): **[10.5281/zenodo.20499050](https://doi.org/10.5281/zenodo.20499050)**.
 
 ## License
 
