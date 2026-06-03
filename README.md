@@ -1,6 +1,7 @@
 # NTK-UQ-Weather-Models
 
 [![Paper](https://img.shields.io/badge/Paper-KDD%202026-b31b1b.svg)](https://doi.org/10.1145/3770855.3818106)
+[![arXiv](https://img.shields.io/badge/arXiv-2606.02886-b31b1b.svg)](https://arxiv.org/abs/2606.02886)
 [![PyPI](https://img.shields.io/pypi/v/ntk-uq-weather.svg)](https://pypi.org/project/ntk-uq-weather/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20499050.svg)](https://doi.org/10.5281/zenodo.20499050)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
